@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 데이터 처리</title>
+<title>로그아웃 데이터 처리</title>
 </head>
 <body>
 <% 
