@@ -14,8 +14,8 @@ public class BbsDAO {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	private int widthBlock = 2; //한블럭의 크기
-	private int pageRows = 3; // 한 페이지에 노출되는 행의 수
+	private int widthBlock = 5; //한블럭의 크기
+	private int pageRows = 10; // 한 페이지에 노출되는 행의 수
 	
 	public BbsDAO() {
 		try {
