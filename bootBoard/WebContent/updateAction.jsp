@@ -1,25 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ page import="bbs.BbsDAO" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="bbs.BbsDAO, javax.naming.*"%>
 <%@ page import="bbs.Bbs"%>
-<%@ page import="javax.naming.*"%>
-<%request.setCharacterEncoding("UTF-8"); %>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>°Ô½ÃÆÇ µ¥ÀÌÅÍ Ã³¸®</title>
+<meta charset="UTF-8">
+<title>ê²Œì‹œíŒ ë°ì´í„° ì²˜ë¦¬</title>
 </head>
 <body>
-<%
-	String id = (String)session.getAttribute("userId");
-%>
-<% 
+	<%
+		// update.jspì—ì„œ ë³µì‚¬
+	String userId = (String) session.getAttribute("userId");
 	if (session.getAttribute("userId") != null)
-	id = (String) session.getAttribute("userId");
-	if (id == null) {
+		userId = (String) session.getAttribute("userId");
+	if (userId == null) {
 		out.println("<script>");
-		out.println("alert('·Î±×ÀÎÀ» ÇÏ¼¼¿ä.')");
+		out.println("alert('ë¡œê·¸ì¸ì„ í•˜ì„¸ìš”')");
 		out.println("location.href = 'login.jsp'");
 		out.println("</script>");
 	}
@@ -28,30 +28,32 @@
 		bbsId = Integer.parseInt(request.getParameter("bbsId"));
 	if (bbsId == 0) {
 		out.println("<script>");
-		out.println("alert('À¯È¿ÇÏÁö ¾ÊÀº ±ÛÀÔ´Ï´Ù.')");
+		out.println("alert('ìœ íš¨í•˜ì§€ ì•Šì€ ê¸€ì…ë‹ˆë‹¤.')");
 		out.println("location.href = 'bbs.jsp'");
 		out.println("</script>");
 	}
 	BbsDAO bbsDAO = new BbsDAO();
 	Bbs bbs = bbsDAO.getBbs(bbsId);
-	if (!id.equals(bbs.getUserId())) {
+	if (!userId.equals(bbs.getUserId())) {
 		out.println("<script>");
-		out.println("alert('±ÇÇÑÀÌ ¾ø½À´Ï´Ù.')");
+		out.println("alert('ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.')");
 		out.println("location.href = 'bbs.jsp'");
 		out.println("</script>");
 	}
-		int result = bbsDAO.write(request.getParameter("bbsTitle"), request.getParameter("userId"), request.getParameter("bbsContent"));		
-		bbsDAO.connClose();
-		if (result == -1) {
-			out.println("<script>");
-			out.println("alert('±Û¼öÁ¤¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.')");
-			out.println("history.back()");
-			out.println("</script>");
-		} else {
-			out.println("<script>");
-			out.println("location.href = 'bbs.jsp'");
-			out.println("</script>");
-		}
-%>
+
+	int result = bbsDAO.update(bbsId, request.getParameter("bbsTitle"), request.getParameter("bbsContent"));
+	bbsDAO.connClose();
+	if (result == -1) {
+		out.println("<script>");
+		out.println("alert('ê¸€ìˆ˜ì •ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.')");
+		out.println("history.back()");
+		out.println("</script>");
+	} else {
+		out.println("<script>");
+		out.println("location.href = 'bbs.jsp'");
+		out.println("</script>");
+	}
+	%>
+
 </body>
 </html>

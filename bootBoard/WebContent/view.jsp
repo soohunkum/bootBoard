@@ -77,7 +77,14 @@ if (request.getParameter("bbsId") != null) {
 		out.println("location.href = 'bbs.jsp'");
 		out.println("</script>");
 	}
-	Bbs bbs = new BbsDAO().getBbs(bbsId);
+	BbsDAO bbsDAO = new BbsDAO();
+	Bbs bbs = bbsDAO.getBbs(bbsId);
+	if (bbs == null) {
+		out.println("<script>");
+		out.println("alert('작성되지 않은 글입니다.')");
+		out.println("location.href = 'bbs.jsp'");
+		out.println("</script>");
+	}
 	%>
 
 	<div class="container pt-3">
@@ -90,7 +97,7 @@ if (request.getParameter("bbsId") != null) {
 			<tbody>
 				<tr>
 					<td style="width: 20%;">글 제목</td>
-					<td colspan="2"><%=bbs.getBbsTitle()%></td>
+					<td colspan="2"> <%=bbs.getBbsTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll("\n", "<br/>") %> </td>
 				</tr>
 				<tr>
 					<td>작성자</td>
@@ -102,13 +109,25 @@ if (request.getParameter("bbsId") != null) {
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td colspan="2" style="min-height: 200px; text-align: left"><%=bbs.getBbsContent()%></td>
+					<td colspan="2" style="min-height: 200px; text-align: left"><%=bbs.getBbsContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll("\n", "<br/>")%></td>
 				</tr>
 			</tbody>
 		</table>
-		<a href="bbs.jsp" class="btn btn-success float-left">목록</a>
-		<button id="writeBtn" type="submit"
-			class="btn btn-primary float-right">글쓰기</button>
+
+		<%
+			String opt = "";
+		if (userId == null || !userId.equals(bbs.getUserId())) {
+			opt = " disabled";
+		}
+		bbsDAO.connClose();
+	
+		%>
+		<a href="bbs.jsp" class="btn btn-success float-left">목록</a> <a
+			href="update.jsp?bbsId=<%=bbsId%>"
+			class="btn btn-primary float-right ml-2<%=opt%>">수정</a> <a
+			href="deleteAction.jsp?bbsId=<%=bbsId%>"
+			class="btn btn-danger float-right<%=opt%>" onclick="return confirm('삭제를 진행하시겠습니까?')">삭제</a>
+
 	</div>
 
 
