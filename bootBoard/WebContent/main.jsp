@@ -55,7 +55,12 @@
    	</div>
    </nav>
    <div class = "container pt-3">
-   <h2>메인페이지입니다</h2>
+   	<div class = "jumbotron">
+   		<h1>웹 사이트 소개</h1>
+   		<p>이 웹사이트는 JSP로 제작한 웹 사이트입니다. 간단한 게시판의 기능을 구현했습니다.
+   			디자인 템플릿으로는 부트스트랩을 사용했습니다.</p>
+   			<a class = "btn btn-primary btn-lg" href = "#" role = "button">자세히 알아보기</a>
+   	</div>
    </div>
 
     <!-- Optional JavaScript -->

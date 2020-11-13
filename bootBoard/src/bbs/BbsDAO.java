@@ -14,6 +14,8 @@ public class BbsDAO {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
+	private int widthBlock = 2; //한블럭의 크기
+	private int pageRows = 3; // 한 페이지에 노출되는 행의 수
 	
 	public BbsDAO() {
 		try {
@@ -79,11 +81,11 @@ public int write(String bbsTitle, String userId, String bbsContent) {
 	return -1; //데이터베이스 오류 코드
 }
 public Vector<Bbs> getList(int pageNumber) {
-	String sql = "SELECT * FROM bbs WHERE bbsId < ? AND bbsAvailable = 1 ORDER BY bbsId DESC LIMIT 10";
+	String sql = "SELECT * FROM bbs WHERE bbsId < ? AND bbsAvailable = 1 ORDER BY bbsId DESC LIMIT " + getPageRows();
 	Vector<Bbs> list = new Vector<Bbs>();
 	try {
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1,  getNext() - (pageNumber - 1) * 10);
+		pstmt.setInt(1,  getNext() - (pageNumber - 1) * getPageRows());
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
 			Bbs bbs = new Bbs();
@@ -108,12 +110,106 @@ public boolean nextPage(int pageNumber) {
 		pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
 		rs = pstmt.executeQuery();
 		while (rs.next()) {
-			return true;
+			return false;
 		}
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
-	return false;
+	return true;
+}
+
+public Bbs getBbs(int bbsId) {
+	String sql = "select * from bbs where bbsId = ?";
+	try {
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, bbsId);
+		rs = pstmt.executeQuery();
+
+		if (rs.next()) {
+			Bbs bbs = new Bbs();
+			bbs.setBbsId(rs.getInt(1));
+			bbs.setBbsTitle(rs.getString(2));
+			bbs.setUserId(rs.getString(3));
+			bbs.setBbsDate(rs.getString(4));
+			bbs.setBbsContent(rs.getString(5));
+			bbs.setBbsAvailable(rs.getInt(6));
+			return bbs;
+		}
+	} catch (SQLException e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}
+	return null;
+}
+
+public int update(int bbsId, String bbsTitle, String bbsContent) {
+	String sql = "UPDATE BBS SER bbsTitle = ?, bbsContent = ? WHERE bbsId = ?";
+	try {
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, bbsTitle);
+		pstmt.setString(2, bbsContent);
+		pstmt.setInt(3, bbsId);
+		return pstmt.executeUpdate();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return -1;
+}
+
+public int delete(int bbsId) {
+	String sql = "UPDATE BBS SET bbsAvailable = 0 WHERE bbsId = ?";
+	try {
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, bbsId);
+		return pstmt.executeUpdate();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return -1;
+}
+
+public int getWidthBlock() {
+	return widthBlock;
+}
+
+public int getPageRows() {
+	return pageRows;
+}
+
+public int getViewList() {
+	String sql = "SELECT COUNT(*) FROM bbs WHERE bbsAvailable = 1";
+	try {
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			return rs.getInt(1);
+		}
+		return 0;  //row가 없으면 0을 리턴
+	}catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return -1;  //데이터베이스 오류 코드
+}
+
+public int totalBlock() { //전체 블록의 수
+	if (getViewList() % (widthBlock * pageRows) > 0) {
+		return getViewList() / (widthBlock * pageRows) + 1;
+	}
+	return getViewList() / (widthBlock * pageRows);
+}
+
+public int currentBlock(int pageNumber) { //현재 블록의 수
+	if (pageNumber % widthBlock >0) {
+		return pageNumber / widthBlock + 1;
+	}
+	return pageNumber / widthBlock;
+}
+
+public int totalPage() { //전체 페이지 수를 계산하는 메소드
+	if (getViewList() % pageRows > 0) {
+		return getViewList() / pageRows + 1;
+	}
+	return getViewList() / pageRows;
 }
 }
 
