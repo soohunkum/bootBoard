@@ -68,8 +68,8 @@
    	</div>
    </nav>
 	<div class="container pt-3">
-		<table class="table table-striped text-center">
-			<thead class="thead-light">
+		<table class="table table-hover text-center">
+			<thead class="table-warning">
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
