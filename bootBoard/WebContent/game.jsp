@@ -62,8 +62,8 @@
    </nav>
    <div class = "container pt-3 bg-warning">
    	<div class = "jumbotron">
-   		<h1>게임 소개</h1>
-   		<p>여러가지 게임들을 소개하는 곳입니다</p>
+   		<h1>홈페이지 소개</h1>
+   		<p>좋아하는 게임을 소개하고 후기를 공유하는 홈페이지 입니다</p>
    			<a class = "btn btn-primary btn-lg  bg-danger" href = "bbs.jsp" role = "button">게임리뷰 게시판으로 가기</a>
    	</div>
    </div>

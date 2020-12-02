@@ -23,49 +23,50 @@
     <title>JSP 게시판</title>
   </head>
   <body>
-	<nav class="navbar navbar-expand-sm navbar-light bg-light">
-		<a class="navbar-brand" href="main.jsp">JSP 게시판</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="main.jsp">메인</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" href="bbs.jsp">게시판<span class="sr-only">(current)</span></a>
-				</li>
-			</ul>
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false">접속하기</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<%
+	 <nav class = "navbar navbar-expand-sm navbar-light bg-light font-weight-bolder">
+   	<a class = "navbar-brand" href="main.jsp">게임리뷰홈페이지</a>
+   	<button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportContent" aria-expanded="false" aria-label = "Toggle navigation">
+   		<span class = "navbar-toggler-icon"></span>
+   	</button>
+   	<div class = "collapse navbar-collapse alert alert-warning" id = "navbarSupportedContent">
+   		<ul class = "navbar-nav nav justify-content-center" >
+   			<li class = "nav-item">
+   				<a class = "nav-link" href = "main.jsp">홈페이지 소개<span class = "sr-only">(current)</span></a>
+   			</li>
+   			<li class = "nav-item">
+   				<a class = "nav-link" href = "main.jsp">게임소개<span class = "sr-only">(current)</span></a>
+   			</li>
+   			<li class = "nav-item">
+   				<a class = "nav-link" href = "bbs.jsp">게임리뷰게시판</a>
+   			</li>
+   			<li class = "nav-item">
+   				<a class = "nav-link" href = "bbs.jsp">QnA게시판</a>
+   			</li>
+   		</ul>
+   		<ul class ="navbar-nav ml-auto">
+   			<li class = "nav-item dropdown">
+   				<a class = "nav-link dropdown-toggle" href ="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">접속하기</a>
+   				<div class = "dropdown-menu" aria-labelledby="navbarDropdown">
+<% 
 	if(id == null) {
 %>
-						<a class="dropdown-item" href="login.jsp">
-							로그인
-						</a> 
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="join.jsp">회원가입</a>
-<%
-	} else {
+   				<a class = "dropdown-item" href="login.jsp">
+   					로그인
+   				</a>
+   				<div class = "dropdown-divider"></div>
+   				<a class ="dropdown-item" href = "join.jsp">회원가입</a>
+<% 
+	}else{
 %>
-						<a class="dropdown-item" href="logoutAction.jsp">로그아웃</a>
+   				<a class ="dropdown-item" href = "logoutAction.jsp">로그아웃</a>
 <%
 	}
 %>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</nav>
+   				</div>
+   			</li>
+   		</ul>
+   	</div>
+   </nav>
 	<div class="container pt-3">
 		<table class="table table-striped text-center">
 			<thead class="thead-light">
