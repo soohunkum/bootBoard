@@ -91,31 +91,31 @@
 	</nav>
 	<section class = "container mt-5" id= "home">
 		<div class = "text-center">
-			<img src = "img/baram.jpg" class="img-fluid mb-3 rounded"/>
+			<img src = "img/baram.jpg" class="img-fluid mb-3 rounded-circle"/>
 			<h2>바람의 나라</h2>
-		<a href = "https://game.naver.com/lounge/The_Kingdom_of_the_Wind/now" ><img src = "img/b.svg" class="img-fluid mr-1"><span class = "mr-2">홈페이지로 가기</span></a>
-			
+			<img src = "img/a.svg" class="img-fluid mr-1"><span class = "mr-2">프로그래머</span>
+			<img src = "img/b.svg" class="img-fluid mr-1"><span class = "mr-2">프로그래머</span>
+			<img src = "img/c.svg" class="img-fluid mr-1"><span class = "home">프로그래머</span>
 			
 		</div>
 	</section>
 	<section class = "bg-white text-dark mt-5 mb-3 pt-5 pb-4" id="career">
-		<div class = "text-center mb-3 text-dark">
-		<h2>게임정보</h2>
-		</div>
 		<div class = "row justify-content-center">
 			<div class = "col-4 text-left mb-5" style = "max-width: 480;">
+				<h2>보유자격증</h2>
 				<ul class = "mt-5">
-					<li class ="mt-4">장르 : MMORPG</li>
-					<li class ="mt-4">등급 : 전체이용가</li>
-					<li class ="mt-4">출시 : 1996.04.05</li>
-					<li class ="mt-4">제작 : (주)넥슨코리아</li>
-					<li class ="mt-4">배급 : (주)넥슨코리아</li>
+					<li class ="mt-4">ITQ</li>
+					<li class ="mt-4">워드프로세서</li>
+					<li class ="mt-4">토익</li>
 				</ul>
 			</div>
 			<div class = "col-4 text-left mb-5" style="max-width: 480;">
+				<h2>활동 경력</h2>
 				<ul  class = "mt-5">
-					<li class = "mt-4">언어 : 한국어</li>
-					<li class = "mt-4">플랫폼 : Windows</li>
+					<li class = "mt-4">초등학교</li>
+					<li class = "mt-4">중학교</li>
+					<li class = "mt-4">고등학교</li>
+
 				</ul> 
 			</div>
 		</div>
@@ -124,43 +124,48 @@
 		<div class = "text-center">
 			<h2>직업</h2>
 		</div>
-		<div class = "container mt-3" style = "max-width: 920px;">
-			<div class ="card-deck">
-				
-				<div class = "card">
-					<img class = "card-img-top" src = "img/sky.gif"/>
+		<img class = "card-img-top" src = "img/profile.jpg"/>
 					<div class = "card-body">
-						<h4 class = "card-title">천인</h4>
-						<p class = "card-text" style="text-align: justify">
-				스킬(98개) <br> 창조/개조/지배의 능력을 가졌다. </p>
+						<h4 class = "card-title">포트폴리오01</h4>
+						<p class = "card-text" style="text-align: justify">포트폴리오 01의 설명</p>
+					</div>
+			<div class ="card-deck mt-3">
+				<div class = "card">
+					<img class = "card-img-top" src = "img/profile.jpg"/>
+					<div class = "card-body">
+						<h4 class = "card-title">포트폴리오01</h4>
+						<p class = "card-text" style="text-align: justify">포트폴리오 01의 설명</p>
 					</div>
 				</div>
 				<div class = "card">
-					<img class = "card-img-top" src = "img/yongsul.jpg"/>
+					<img class = "card-img-top" src = "img/profile.jpg"/>
 					<div class = "card-body">
-						<h4 class = "card-title">영술사</h4>
-						<p class = "card-text" style="text-align: justify">
-				스킬(35개)<br> 영술사는 각기 다른 역할을 수행할 수 있는 요괴 대장군, 도깨비불, 괴선에 빙의되어 다양한 전투 상황에 빠르게 대처할 수 있다 </p>
+						<h4 class = "card-title">포트폴리오01</h4>
+						<p class = "card-text" style="text-align: justify">포트폴리오 01의 설명</p>
 					</div>
 				</div>
 				<div class = "card">
-					<img class = "card-img-top" src = "img/mado.jpg"/>
+					<img class = "card-img-top" src = "img/profile.jpg"/>
 					<div class = "card-body">
-						<h4 class = "card-title">마도사</h4>
-						<p class = "card-text" style="text-align: justify">
-				스킬(64개)<br> 광폭의 힘으로 아군의 마법을 더욱 강력하게 만든다. </p>
+						<h4 class = "card-title">포트폴리오01</h4>
+						<p class = "card-text" style="text-align: justify">포트폴리오 01의 설명</p>
 					</div>
 				</div>
 				<div class = "card">
-					<img class = "card-img-top" src = "img/arrow.jpg"/>
+					<img class = "card-img-top" src = "img/profile.jpg"/>
 					<div class = "card-body">
-						<h4 class = "card-title">궁사</h4>
-						<p class = "card-text" style="text-align: justify">
-				스킬(102개)<br> 궁술을 통하여 강력한 원거리 공격을 자랑한다. </p>
+						<h4 class = "card-title">포트폴리오01</h4>
+						<p class = "card-text" style="text-align: justify">포트폴리오 01의 설명</p>
+					</div>
+				</div>
+				<div class = "card">
+					<img class = "card-img-top" src = "img/profile.jpg"/>
+					<div class = "card-body">
+						<h4 class = "card-title">포트폴리오01</h4>
+						<p class = "card-text" style="text-align: justify">포트폴리오 01의 설명</p>
 					</div>
 				</div>
 			</div>
-		</div>
 	</section>
 	<section class ="bg-white" id ="contact">
 		<div class ="container">

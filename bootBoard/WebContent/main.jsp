@@ -67,6 +67,7 @@
    			<a class = "btn btn-primary btn-lg  bg-danger" href = "bbs.jsp" role = "button">게임리뷰 게시판으로 가기</a>
    	</div>
    </div>
+   
 
     <!-- Optional JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
